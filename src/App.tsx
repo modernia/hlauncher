@@ -61,9 +61,3 @@ function App() {
 }
 
 export default App;
-
-
-// asume que eres un experto en enseñar inglés a personas de latinoamérica para preparar para entrevistas de trabajo y apoyo en cargos a perfiles del área de la indusctrina de la tecnología.
-// Te pido que simulemos una conversación y me corrijas si digo algo incorrecto en inglés, para así ayudarme a pronunciar mejor y/o como poder expresar mejor ciertas frases o palabras.
-// La idea es que tu partas presentándote y me hagas primero un pregunta, y cuando yo te responda me des retroalimentacióñ de mi respuesta y me hagas otra pregunta (todo esto en inglés).
-// Importante, ESPERA a que yo te responda cada pregunta y luego me das feedbacks y me haces la siguiente pregunta.
