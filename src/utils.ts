@@ -49,36 +49,6 @@ export const searchMachedApps = async (name:string, search: ISearchResult[], dir
 
 }
 
-
-const searchImage = async (name:string, iconDir:string[]): Promise<string> => {
-  if(name === "") return "unknown.jpg";
-  if(iconDir.length === 0) return "unknown.jpg";
-  const iconPath = (await fs.readDir(`${iconDir}/scalable`, {recursive: true})).filter((i) => i.name?.split(".")[0].toString() === name)[0]
-  if(iconPath !== undefined) {
-    if(await fs.exists(`${iconDir}/scalable/${iconPath.name}`)){
-      await fs.copyFile(iconPath.path, `${await resourceDir()}icons/${iconPath.name}`)
-      if(await fs.exists(`${await resourceDir()}icons/${iconPath.name}`)){
-        name = `${iconPath.name}`
-      } else {
-        name = `unknown.jpg`
-      }
-    }
-  } else {
-    // /home/modernia/.local/share/icons/hicolor/128x128/apps
-    const icons = (await fs.readDir(`/usr/share/icons/hicolor/scalable/apps`)).filter((i) => i.name?.split(".")[0].toString() === name)[0]
-    if(icons === undefined) name = `unknown.jpg`
-    if(icons !== undefined) {
-      await fs.copyFile(icons.path, `${await resourceDir()}icons/${icons.name}`)
-      if(await fs.exists(`${await resourceDir()}icons/${icons.name}`)){
-        name = `${icons.name}`
-      } else {
-        name = `unknown.jpg`
-      }
-    }
-  }
-  return name
-}
-
 const searchIcon = async (name:string, iconDir:string[]): Promise<string> => {
   if(name.endsWith(".png") || name.endsWith(".jpg") || name.endsWith(".svg")) return name;
   if(name === "") return "unknown.jpg";
